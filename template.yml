@@ -41,7 +41,7 @@ Resources:
   DeleteProductFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: src/delete-products/
+      CodeUri: src/delete-product/
       Handler: index.handler
       Policies:
         - Statement:
