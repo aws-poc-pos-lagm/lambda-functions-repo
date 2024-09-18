@@ -15,7 +15,7 @@ Resources:
   AddProductFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: src/addProduct/
+      CodeUri: src/add-product/
       Handler: index.handler
       Policies:
         - Statement:
@@ -28,7 +28,7 @@ Resources:
   ListProductsFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: src/listProducts/
+      CodeUri: src/post-products/
       Handler: index.handler
       Policies:
         - Statement:
@@ -41,7 +41,7 @@ Resources:
   DeleteProductFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: src/deleteProduct/
+      CodeUri: src/delete-products/
       Handler: index.handler
       Policies:
         - Statement:
