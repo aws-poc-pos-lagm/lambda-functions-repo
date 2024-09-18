@@ -39,6 +39,7 @@ Resources:
   AddProductFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
+      FunctionName: "lmb-add-product"
       CodeUri: src/add-product/
       Handler: index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
@@ -47,6 +48,7 @@ Resources:
   ListProductsFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
+      FunctionName: "lmb-list-products"
       CodeUri: src/list-products/
       Handler: index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
@@ -55,6 +57,7 @@ Resources:
   DeleteProductFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
+      FunctionName: "lmb-delete-product"
       CodeUri: src/delete-product/
       Handler: index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
