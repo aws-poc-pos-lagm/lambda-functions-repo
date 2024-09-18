@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Lambda Functions for POS System
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 10
+    Environment:
+      Variables:
+        TABLE_NAME: 'products'
+
+Resources:
+  # Lambda Function: Add Product
+  AddProductFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: src/addProduct/
+      Handler: index.handler
+      Policies:
+        - Statement:
+            Effect: Allow
+            Action:
+              - dynamodb:PutItem
+            Resource: arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/products
+
+  # Lambda Function: List Products
+  ListProductsFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: src/listProducts/
+      Handler: index.handler
+      Policies:
+        - Statement:
+            Effect: Allow
+            Action:
+              - dynamodb:Scan
+            Resource: arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/products
+
+  # Lambda Function: Delete Product
+  DeleteProductFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: src/deleteProduct/
+      Handler: index.handler
+      Policies:
+        - Statement:
+            Effect: Allow
+            Action:
+              - dynamodb:DeleteItem
+            Resource: arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/products
