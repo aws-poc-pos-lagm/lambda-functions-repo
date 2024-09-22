@@ -41,6 +41,10 @@ sam build
 sam deploy --stack-name pos-lambda-functions --resolve-s3 --capabilities CAPABILITY_IAM --profile <YOUR-PROFILE>
 ```
 
+```
+sam deploy --stack-name pos-lambda-functions --resolve-s3 --capabilities CAPABILITY_IAM --profile <YOUR-PROFILE> --force-upload
+```
+
 ## Removing the CloudFormation Stack
 In case of errors like ``ROLLBACK_COMPLETE, you might need to delete the CloudFormation stack manually before deploying again.
 
