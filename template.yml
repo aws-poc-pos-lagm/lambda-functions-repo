@@ -23,6 +23,8 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
       Policies:
         - PolicyName: 'LambdaDynamoDBPolicy'
           PolicyDocument:
@@ -40,8 +42,8 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: "lmb-add-product"
-      CodeUri: src/add-product/
-      Handler: index.handler
+      CodeUri: src/
+      Handler: add-product/index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
 
   # Lambda Function: List Products
@@ -49,8 +51,8 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: "lmb-list-products"
-      CodeUri: src/list-products/
-      Handler: index.handler
+      CodeUri: src/
+      Handler: list-products/index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
 
   # Lambda Function: Delete Product
@@ -58,6 +60,6 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: "lmb-delete-product"
-      CodeUri: src/delete-product/
-      Handler: index.handler
+      CodeUri: src/
+      Handler: delete-product/index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
