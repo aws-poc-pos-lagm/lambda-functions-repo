@@ -4,6 +4,7 @@
   "repository": "git@github.com:aws-poc-pos-lagm/lambda-functions-repo.git",
   "author": "Luis Guisado",
   "dependencies": {
-    "aws-sdk": "^2.1691.0"
+    "@aws-sdk/client-dynamodb": "^3.656.0",
+    "@aws-sdk/lib-dynamodb": "^3.656.0"
   }
 }

@@ -1,5 +1,8 @@
-const AWS = require('aws-sdk');
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
+const { DynamoDBDocumentClient, ScanCommand } = require('@aws-sdk/lib-dynamodb');
+
+const dynamoDbClient = new DynamoDBClient({});
+const dynamoDb = DynamoDBDocumentClient.from(dynamoDbClient);
 const tableName = process.env.TABLE_NAME;
 
 exports.handler = async () => {
@@ -8,10 +11,10 @@ exports.handler = async () => {
   };
 
   try {
-    const data = await dynamoDb.scan(params).promise();
+    const { Items } = await dynamoDb.send(new ScanCommand(params));
     return {
       statusCode: 200,
-      body: JSON.stringify(data.Items)
+      body: JSON.stringify(Items)
     };
   } catch (error) {
     return {
